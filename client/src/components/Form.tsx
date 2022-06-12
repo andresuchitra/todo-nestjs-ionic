@@ -1,10 +1,10 @@
-import './ExploreContainer.css';
+import './Form.css';
 
-interface ContainerProps {
+interface FormProps {
   name: string;
 }
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const Form: React.FC<FormProps> = ({ name }) => {
   return (
     <div className="container">
       <strong>{name}</strong>
@@ -13,4 +13,4 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   );
 };
 
-export default ExploreContainer;
+export default Form;
