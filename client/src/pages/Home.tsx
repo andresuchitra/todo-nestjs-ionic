@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonText, IonNote, IonChip, IonLabel } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import './Home.css';
 
@@ -29,13 +29,23 @@ const Home: React.FC = () => {
             <IonTitle size="large">Todo List</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList>
+        <IonList class="list">
            {items.map((item: any, idx: number) => (
-            <IonItem key={idx}>
-              <IonLabel>{item.name}</IonLabel>
-            </IonItem>
+             <IonItem key={idx}>
+              <div className="todo-item">
+                <IonText class="todo-name">{item.name}</IonText>
+                <IonText class="description">
+                  {item.description}
+                </IonText>
+              </div>
+              <IonNote slot="end">
+                <IonChip color={item.IsDone ? 'success' : 'secondary'}>
+                    <IonLabel color={item.IsDone ? 'success' : 'secondary'}>{item.IsDone ? 'Done' : 'In progress'}</IonLabel>
+                  </IonChip>
+                </IonNote>
+             </IonItem>
           ))}
-      </IonList>
+        </IonList>
       </IonContent>
     </IonPage>
   );

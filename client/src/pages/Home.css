@@ -1,0 +1,16 @@
+.list {
+    margin-top: 16px;
+}
+.description {
+    color: #777;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.todo-item {
+    padding-top: 18px;
+    padding-bottom: 10px;
+}
+.todo-name {
+    margin-bottom: 4px;
+    display: block;
+}
