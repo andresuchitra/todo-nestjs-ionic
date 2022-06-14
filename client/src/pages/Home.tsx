@@ -1,8 +1,10 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonText, IonNote, IonChip, IonLabel, useIonToast, IonItemSliding, IonItemOptions, IonItemOption } from '@ionic/react';
-import { useEffect, useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Home.css';
 
 interface TodoItem {
+  id: number;
   name: string;
   description: string;
   isDone: boolean;
@@ -45,17 +47,24 @@ const Home: React.FC = () => {
     slidingItem.close();
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const getTodos = async () => {
       const res = await fetch(
         'http://localhost:3000/todos',
       );
-      const json = await res.json();
+      let json = await res.json();
+      json = json.sort((a: TodoItem, b: TodoItem) => b.id - a.id)
       setItems(json);
-    };
+  }
 
-    fetchData();
-  }, []);
+  const loc = useLocation()
+  useLayoutEffect(() => {
+    if(loc.pathname === '/home') getTodos()
+  }, [loc.pathname]);
+
+  // useLayoutEffect(() => {
+  //   getTodos()
+  //   console.log("use layouteffect ", loc)
+  // }, [loc])
 
   return (
     <IonPage>

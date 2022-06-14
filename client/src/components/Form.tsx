@@ -19,7 +19,6 @@ const Form: React.FC<FormProps> = ({ data: any, isEdit, callSubmit }) => {
   const handleSubmit = (event: any) => {
     callSubmit({ name, description })
     event.preventDefault();
-    console.log("in Form data: ", { name, description });
   }
 
   const handleName = (value: any) => {

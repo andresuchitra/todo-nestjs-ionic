@@ -28,7 +28,7 @@ const CreateTodo: React.FC = () => {
           body: JSON.stringify(data),
         }
       );
-      present('Todo is created successfully')
+      present('Todo is created successfully', 3000)
       history.push('/home')
     }
     catch(e: unknown) {
